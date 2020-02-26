@@ -4,18 +4,15 @@ namespace Salopot\ImageGenerator\ImageSources\Remote;
 use Intervention\Image\Image;
 use Salopot\ImageGenerator\ImageProvider;
 use Salopot\ImageGenerator\ImageSources\ImageSourceInterface;
+use Salopot\ImageGenerator\ImageSources\NamedTrait;
 use Salopot\ImageGenerator\ImageSources\ResizeSelectorTrait;
 
 class PlaceImgSource implements ImageSourceInterface
 {
-    use ResizeSelectorTrait;
+    use ResizeSelectorTrait,
+        NamedTrait;
 
     public const NAME = 'PlaceImg';
-
-    public function getName(): string
-    {
-        return self::NAME;
-    }
 
     /**
      * @param ImageProvider $imageProvider

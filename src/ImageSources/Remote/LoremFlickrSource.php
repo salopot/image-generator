@@ -6,18 +6,15 @@ namespace Salopot\ImageGenerator\ImageSources\Remote;
 use Intervention\Image\Image;
 use Salopot\ImageGenerator\ImageProvider;
 use Salopot\ImageGenerator\ImageSources\ImageSourceInterface;
+use Salopot\ImageGenerator\ImageSources\NamedTrait;
 use Salopot\ImageGenerator\ImageSources\SourceSelectorTrait;
 
 class LoremFlickrSource implements ImageSourceInterface
 {
-    use SourceSelectorTrait;
+    use SourceSelectorTrait,
+        NamedTrait;
 
     public const NAME = 'LoremFlickr';
-
-    public function getName(): string
-    {
-        return self::NAME;
-    }
 
     /**
      * LoremFlickrSource constructor.

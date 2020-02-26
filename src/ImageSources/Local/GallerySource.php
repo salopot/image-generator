@@ -5,6 +5,7 @@ namespace Salopot\ImageGenerator\ImageSources\Local;
 
 use Salopot\ImageGenerator\ImageProvider;
 use Salopot\ImageGenerator\ImageSources\ImageSourceInterface;
+use Salopot\ImageGenerator\ImageSources\NamedTrait;
 use Salopot\ImageGenerator\ImageSources\SourceSelectorTrait;
 use FilesystemIterator;
 use Intervention\Image\Image;
@@ -15,7 +16,8 @@ use SplFileInfo;
 
 class GallerySource implements ImageSourceInterface
 {
-    use SourceSelectorTrait;
+    use SourceSelectorTrait,
+        NamedTrait;
 
     public const NAME = 'Gallery';
 
@@ -45,11 +47,6 @@ class GallerySource implements ImageSourceInterface
         $this->imageProvider = $imageProvider;
         $this->galleryPath = $galleryPath;
         $this->resizeMode = $resizeMode;
-    }
-
-    public function getName(): string
-    {
-        return static::NAME;
     }
 
     /**

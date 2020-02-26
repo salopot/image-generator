@@ -9,12 +9,14 @@ namespace Salopot\ImageGenerator\ImageSources\Remote;
 
 use Salopot\ImageGenerator\ImageProvider;
 use Salopot\ImageGenerator\ImageSources\ImageSourceInterface;
+use Salopot\ImageGenerator\ImageSources\NamedTrait;
 use Salopot\ImageGenerator\ImageSources\SourceSelectorTrait;
 use Intervention\Image\Image;
 
 class PicsumPhotosSource implements ImageSourceInterface
 {
-    use SourceSelectorTrait;
+    use SourceSelectorTrait,
+        NamedTrait;
 
     public const NAME = 'PicsumPhotos';
 
@@ -25,11 +27,6 @@ class PicsumPhotosSource implements ImageSourceInterface
     public function __construct(ImageProvider $imageProvider)
     {
         $this->imageProvider = $imageProvider;
-    }
-
-    public function getName(): string
-    {
-        return static::NAME;
     }
 
     protected function getRandomSelector()
