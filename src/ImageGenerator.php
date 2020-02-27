@@ -38,7 +38,7 @@ class ImageGenerator
     public function setExtension(string $extension): self
     {
         if (!in_array($extension, $this->imageProvider->getImageManager()->getSupportedExtensions(), true)) {
-            throw new RuntimeException("Not supported image extension {$extension}");
+            throw new InvalidArgumentException("Not supported image extension {$extension}");
         }
         $this->extension = $extension;
         return $this;
@@ -244,7 +244,9 @@ class ImageGenerator
      */
     public function getDataUrl(): string
     {
-        return (string) $this->image->encode($this->extension)->encode('data-url');
+        // Encode image data as external for detecting mime type
+        $image = $this->imageProvider->getImageManager()->make($this->getContent());
+        return (string) $image->encode('data-url');
     }
 
     /**

@@ -35,4 +35,13 @@ class ImageManager extends \Intervention\Image\ImageManager
     {
         return $this->supportedExtensions;
     }
+
+    /**
+     * Return used image driver
+     * @return string
+     */
+    public function getDriver(): string
+    {
+        return $this->config['driver'];
+    }
 }

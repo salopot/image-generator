@@ -51,10 +51,12 @@ class ImageProvider extends BaseProvider
     /**
      * Add new image source to list
      * @param ImageSourceInterface $imageSource
+     * @return $this
      */
-    public function addImageSource(ImageSourceInterface $imageSource)
+    public function addImageSource(ImageSourceInterface $imageSource): self
     {
         $this->imageSources[$imageSource->getName()] = $imageSource;
+        return $this;
     }
 
     /**
