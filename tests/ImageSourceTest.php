@@ -17,6 +17,7 @@ class ImageSourceTest extends TestCase
         return [
             [new ImageSources\Local\SolidColorSource($imageProvider)],
             [new ImageSources\Local\GallerySource($imageProvider, __DIR__ . '/data')],
+            [new ImageSources\Local\GradientSource($imageProvider)],
             /** Disabled: unstable */
             //[new ImageSources\Remote\LoremPixelSource($imageProvider)],
             [new ImageSources\Remote\PicsumPhotosSource($imageProvider)],

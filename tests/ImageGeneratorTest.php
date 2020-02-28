@@ -16,9 +16,7 @@ final class ImageGeneratorTest extends TestCase
         $imageProvider = new \Salopot\ImageGenerator\ImageProvider($faker);
         $this->imageGenerator = new ImageGenerator(
             $imageProvider,
-            $imageProvider->getImageManager()->canvas(100, 100, '#ff0000')
-            // TODO: possible set small gradient image
-            //$imageProvider->getImageManager()->make(__DIR__ . '/data/test.jpg')
+            $imageProvider->getImageManager()->make(__DIR__ . '/data/gradient.png')
         );
     }
 
@@ -79,10 +77,9 @@ final class ImageGeneratorTest extends TestCase
                 'right',
                 'top'
             ]],
-            //TODO: after gradient was implemented
-            //['contrast', [65]],
-            //['gamma', [1.6]],
-            //['blur', [15]],
+            ['contrast', [65]],
+            ['gamma', [1.6]],
+            ['blur', [15]],
         ];
     }
 

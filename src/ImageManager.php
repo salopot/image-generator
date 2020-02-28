@@ -3,6 +3,9 @@ namespace Salopot\ImageGenerator;
 
 class ImageManager extends \Intervention\Image\ImageManager
 {
+    public const DRIVER_GD = 'gd';
+    public const DRIVER_IMAGICK = 'imagick';
+
     /** @var string[] */
     protected $supportedExtensions;
 
