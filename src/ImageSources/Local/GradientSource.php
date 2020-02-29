@@ -121,14 +121,12 @@ class GradientSource implements ImageSourceInterface
     }
 
     /**
-     * @see https://geekthis.net/post/php-gradient-images-rectangle-gd/
-     * @see http://planetozh.com/blog/my-projects/images-php-gd-gradient-fill/
+     *
      * @param int $width
      * @param int $height
      * @param string $startColor
      * @param string $endColor
      * @param string $direction
-     * @return false|resource
      */
     protected function gradientGd(int $width, int $height, string $startColor, string $endColor, string $direction)
     {
@@ -137,10 +135,10 @@ class GradientSource implements ImageSourceInterface
         $endColor = $this->hexToRGB($endColor);
 
         switch ($direction) {
-            case 'vertical':
+            case self::DIRECTION_VERTICAL:
                 $steps = $height;
                 break;
-            case 'horizontal':
+            case self::DIRECTION_HORIZONTAL:
                 $steps = $width;
                 break;
         }

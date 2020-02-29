@@ -88,7 +88,7 @@ final class ImageGeneratorTest extends TestCase
      */
     public function testImageProcessing(string $name, array $params)
     {
-        $initContent = $this->imageGenerator->getContent();
+        $initContent = $this->imageGenerator->setExtension('png')->getContent();
         call_user_func([$this->imageGenerator, $name], ...$params);
         $resultContent = $this->imageGenerator->getContent();
         $this->assetImage($resultContent, "Invalid {$name} processing");

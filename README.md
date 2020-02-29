@@ -23,6 +23,7 @@ $imageProvider = new \Salopot\ImageGenerator\ImageProvider($generator);
 // Configure some or all image sources
 $imageProvider->addImageSource(new \Salopot\ImageGenerator\ImageSources\Local\SolidColorSource($imageProvider));
 $imageProvider->addImageSource(new \Salopot\ImageGenerator\ImageSources\Local\GallerySource($imageProvider, '/dir/with/images'));
+$imageProvider->addImageSource(new \Salopot\ImageGenerator\ImageSources\Local\SolidColorSource($imageProvider));
 $imageProvider->addImageSource(new \Salopot\ImageGenerator\ImageSources\Remote\LoremPixelSource($imageProvider));
 $imageProvider->addImageSource(new \Salopot\ImageGenerator\ImageSources\Remote\PicsumPhotosSource($imageProvider));
 $imageProvider->addImageSource(new \Salopot\ImageGenerator\ImageSources\Remote\UnsplashSource($imageProvider));
@@ -51,6 +52,7 @@ Choose one of the available sources.
 Local (fast & no need internet connection):
 - **SolidColor** - generate image filled single color 
 - **Gallery** - use local directory with images as source
+- **Gradient** - generate gradient image
 
 Remote:
 - **LoremPixel** - [lorempixel.com](https://lorempixel.com) used in the original faker (very unstable now)  
