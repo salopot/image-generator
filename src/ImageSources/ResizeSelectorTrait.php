@@ -46,13 +46,16 @@ trait ResizeSelectorTrait
         if (isset($this->selectorMap[$selectorName])) {
             $file = $this->selectorMap[$selectorName];
             rewind($file);
-            return $this->imageProvider->getImageManager()
-                ->make(stream_get_contents($file))
+            $image = $this->imageProvider->getImageManager()
+                ->make(stream_get_contents($file));
+            if ($image->getWidth() !== $width || $image->getHeight() !== $height) {
                 // Warning: use image resize
-                ->resize($width, $height);
+                $image->resize($width, $height);
+            }
+            return $image;
         } else {
             $image = $this->getRandomImage($width, $height);
-            $content = (string) $image->encode();
+            $content = (string) $image->encode('png');
             $file = tmpfile();
             fwrite($file, $content);
             $this->selectorMap[$selectorName] = $file;

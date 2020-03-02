@@ -40,22 +40,23 @@ class ImageSourceTest extends TestCase
      */
     public function testGetImage(ImageSourceInterface $imageSource)
     {
-        $content = (string) $imageSource->getImage(100, 100)->encode();
-        # check image
+        $content = (string) $imageSource->getImage(150, 100)->encode();
+        // check image
         $imageInfo = getimagesizefromstring($content);
         $this->assertNotFalse($imageInfo, 'Failed asserting that content is image');
-        # check size
-        $this->assertSame(100, $imageInfo[0], 'Failed asserting image width');
+        // check size
+        $this->assertSame(150, $imageInfo[0], 'Failed asserting image width');
         $this->assertSame(100, $imageInfo[1], 'Failed asserting image height');
-        # check same with selector
 
+        // check same with selector
         /*
-        //check double save
-        $this->assertSame(
-            (string) $imageSource->getImage(100, 100, 'selector')->encode(),
-            (string) $imageSource->getImage(100, 100, 'selector')->encode(),
-            'Failed asserting same image with selector'
-        );
+        if (!method_exists($imageSource, 'getSelectedImage')) {
+            $this->assertSame(
+                (string) $imageSource->getImage(150, 100, 'selector')->encode('png'),
+                (string) $imageSource->getImage(150, 100, 'selector')->encode('png'),
+                'Failed asserting same image with selector'
+            );
+        }
         */
     }
 }
