@@ -1,5 +1,18 @@
-#Image generator
+# Image generator
 Image provider for [fzaninotto/Faker](https://github.com/fzaninotto/Faker) package with support multiple image sources and basic image manipulations
+
+Local (fast & no need internet connection):
+- **SolidColor** - generate image filled single color 
+- **Gallery** - use local directory with images as source
+- **Gradient** - generate gradient image
+
+Remote:
+- **LoremPixel** - [lorempixel.com](https://lorempixel.com) used in the original faker (very unstable now)  
+- **PicsumPhotos** - [picsum.photos](https://picsum.photos)
+- **Unsplash** - [unsplash.com](https://source.unsplash.com)
+- **LoremFlickr** - [loremflickr.com](https://loremflickr.com)
+- **PlaceKitten** - [placekitten.com](http://placekitten.com)
+- **PlaceImg** - [placeimg.com](https://placeimg.com) Warning: selector param use image resizing
 
 ## Description
 - Support multiple local & remote sources (also you can write own)
@@ -13,7 +26,9 @@ Image provider for [fzaninotto/Faker](https://github.com/fzaninotto/Faker) packa
 - Imagick PHP extension (>=6.5.7)
 
 ## Installation
-composer require salopot/image-generator
+```
+composer require --dev salopot/image-generator
+```
 
 ## Configuration
 
@@ -48,19 +63,6 @@ $item2ThumbnailImage = $generator->imageGenerator(50, 50, 'item-2')->getDataUrl(
 ```
 
 Choose one of the available sources.
-
-Local (fast & no need internet connection):
-- **SolidColor** - generate image filled single color 
-- **Gallery** - use local directory with images as source
-- **Gradient** - generate gradient image
-
-Remote:
-- **LoremPixel** - [lorempixel.com](https://lorempixel.com) used in the original faker (very unstable now)  
-- **PicsumPhotos** - [picsum.photos](https://picsum.photos)
-- **Unsplash** - [unsplash.com](https://source.unsplash.com)
-- **LoremFlickr** - [loremflickr.com](https://loremflickr.com)
-- **PlaceKitten** - [placekitten.com](http://placekitten.com)
-- **PlaceImg** - [placeimg.com](https://placeimg.com) Warning: selector param use image resize
 ```php
 $oneSourceUrl = $generator->imageGenerator(640, 480, null, 'SolidColor')
     ->grayscale()->getDataUrl();

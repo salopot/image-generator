@@ -1,14 +1,18 @@
 {
   "name": "salopot/image-generator",
   "type": "library",
-  "description": "Images generator for Faker",
+  "description": "Image provider for Faker: solid color, gradient, gallery, LoremPixel, PicsumPhotos, Unsplash, LoremFlickr, PlaceKitten, PlaceImg",
   "keywords": [
     "faker",
     "image",
     "local",
-    "unspash",
-    "picsum.photos",
-    "lorempixel"
+    "gradient",
+    "lorempixel",
+    "PicsumPhotos",
+    "Unsplash",
+    "LoremFlickr",
+    "PlaceKitten",
+    "PlaceImg"
   ],
   "license": "MIT",
   "authors": [
@@ -28,6 +32,6 @@
     }
   },
   "require-dev": {
-    "phpunit/phpunit": "^7.5"
+    "phpunit/phpunit": "^7.5||^8.0"
   }
 }
