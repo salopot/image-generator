@@ -93,3 +93,36 @@ $dataUrl = $generator->imageGenerator(640, 480)->getDataUrl();
 $filePath = $generator->imageGenerator(640, 480)->getFilePath('/path/to/dir');
 $content = $generator->imageGenerator(640, 480)->getContent();
 ``` 
+
+###Laravel
+The easiest to register faker with new configuration in Laravel: add next lines to the method app/Providers/AppServiceProvider.php::register 
+```php
+use Faker\Factory as FakerFactory;
+use Faker\Generator as FakerGenerator;
+use Salopot\ImageGenerator\ImageSources\Local;
+use Salopot\ImageGenerator\ImageSources\Remote;
+
+***
+
+$this->app->singleton(FakerGenerator::class, function ($app) {
+    $generator =  FakerFactory::create($app['config']->get('app.faker_locale', 'en_US'));
+    
+    // Additional faker providers
+    $imageProvider = new \Salopot\ImageGenerator\ImageProvider($generator);
+    $imageProvider->addImageSource(new Local\SolidColorSource($imageProvider));
+    $imageProvider->addImageSource(new Local\GallerySource($imageProvider, '/dir/with/images'));
+    $imageProvider->addImageSource(new Local\SolidColorSource($imageProvider));
+    $imageProvider->addImageSource(new Remote\LoremPixelSource($imageProvider));
+    $imageProvider->addImageSource(new Remote\PicsumPhotosSource($imageProvider));
+    $imageProvider->addImageSource(new Remote\UnsplashSource($imageProvider));
+    $imageProvider->addImageSource(new Remote\PlaceKittenSource($imageProvider));
+    $imageProvider->addImageSource(new Remote\PlaceImgSource($imageProvider));
+    $generator->addProvider($imageProvider);
+
+   return $generator;
+});
+```
+After that you can use faker (with ImageGenerator) in all standard laravel ways via DI:
+[factories](https://laravel.com/docs/master/database-testing#writing-factories),
+[resolve(\Faker\Generator::class)](https://laravel.com/docs/8.x/container#resolving),
+[constructor injection](https://laravel.com/docs/8.x/container#automatic-injection)
